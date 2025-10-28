@@ -1,0 +1,11 @@
+services:
+  app:
+    build: .
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
