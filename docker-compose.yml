@@ -1,11 +1,18 @@
 services:
   app:
     build: .
+    ports:
+      - "3000:3000"
     depends_on:
       - db
     environment:
-      DB_HOST: db
+      - DATABASE_URL=postgres://postgres:Jhansi@123@db:5432/jhansi
+
   db:
-    image: postgres
+    image: postgres:15
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=Jhansi@1123
+      - POSTGRES_DB=jhansi
     ports:
       - "5432:5432"
